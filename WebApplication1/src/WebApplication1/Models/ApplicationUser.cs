@@ -11,5 +11,6 @@ namespace WebApplication1.Models
     {
         public int Age { get; set; }
 
+        public List<Message> Messages { get; set; }
     }
 }
