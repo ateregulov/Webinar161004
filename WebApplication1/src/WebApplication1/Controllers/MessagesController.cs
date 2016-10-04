@@ -48,6 +48,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 message.SenderId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                message.Datetime = DateTime.Now;
                 _context.Add(message);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
