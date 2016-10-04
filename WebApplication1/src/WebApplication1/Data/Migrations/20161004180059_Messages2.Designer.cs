@@ -8,9 +8,10 @@ using WebApplication1.Data;
 namespace WebApplication1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161004180059_Messages2")]
+    partial class Messages2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -194,6 +195,20 @@ namespace WebApplication1.Data.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Message2", b =>
+                {
+                    b.Property<int>("Message2Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Datetime");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Message2Id");
+
+                    b.ToTable("Messages2");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

@@ -22,7 +22,20 @@ namespace WebApplication1.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
 
+            builder.Entity<Message>()
+                .HasOne(p => p.Recipient)
+                .WithMany(b => b.MessagesReceived)
+                .HasForeignKey(p => p.RecipientId);
 
+            builder.Entity<Message>()
+                .HasOne(p => p.Sender)
+                .WithMany(b => b.MessagesSended)
+                .HasForeignKey(p => p.SenderId);
         }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
     }
 }

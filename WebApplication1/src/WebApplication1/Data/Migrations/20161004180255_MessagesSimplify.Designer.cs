@@ -8,9 +8,10 @@ using WebApplication1.Data;
 namespace WebApplication1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161004180255_MessagesSimplify")]
+    partial class MessagesSimplify
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -236,11 +237,11 @@ namespace WebApplication1.Data.Migrations
             modelBuilder.Entity("WebApplication1.Models.Message", b =>
                 {
                     b.HasOne("WebApplication1.Models.ApplicationUser", "Recipient")
-                        .WithMany("MessagesReceived")
+                        .WithMany()
                         .HasForeignKey("RecipientId");
 
                     b.HasOne("WebApplication1.Models.ApplicationUser", "Sender")
-                        .WithMany("MessagesSended")
+                        .WithMany()
                         .HasForeignKey("SenderId");
                 });
         }
